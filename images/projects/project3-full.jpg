@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="100%" height="100%" fill="#1a1a2e"/>
+  <text x="400" y="150" font-family="Arial, sans-serif" font-size="40" fill="#ffffff" text-anchor="middle">Proyecto 3 - Vista Detallada</text>
+  <text x="400" y="210" font-family="Arial, sans-serif" font-size="28" fill="#ff4d8d" text-anchor="middle">Logo Animado - Motion Graphics</text>
+  <circle cx="400" cy="350" r="100" fill="none" stroke="#ff4d8d" stroke-width="8"/>
+  <path d="M350,300 L450,400 M350,400 L450,300" stroke="#ff4d8d" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="250" cy="250" r="30" fill="#7047eb"/>
+  <circle cx="550" cy="250" r="30" fill="#7047eb"/>
+  <circle cx="250" cy="450" r="20" fill="#4deeea"/>
+  <circle cx="550" cy="450" r="20" fill="#4deeea"/>
+  <rect x="200" y="500" width="400" height="20" fill="#ff4d8d" rx="5" ry="5"/>
+  <rect x="250" y="530" width="300" height="20" fill="#ff4d8d" rx="5" ry="5"/>
+</svg>

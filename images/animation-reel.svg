@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="100%" height="100%" fill="#1a1a2e"/>
+  <path d="M400,150 C500,150 600,250 600,350 C600,450 500,550 400,550 C300,550 200,450 200,350 C200,250 300,150 400,150" stroke="#7047eb" stroke-width="6" fill="none"/>
+  <path d="M400,200 C470,200 540,250 540,350 C540,450 470,500 400,500 C330,500 260,450 260,350 C260,250 330,200 400,200" stroke="#ff4d8d" stroke-width="4" fill="none"/>
+  <text x="400" y="250" font-family="Arial, sans-serif" font-size="40" fill="#ffffff" text-anchor="middle">Animation</text>
+  <text x="400" y="300" font-family="Arial, sans-serif" font-size="40" fill="#ffffff" text-anchor="middle">Demo Reel</text>
+  <text x="400" y="370" font-family="Arial, sans-serif" font-size="18" fill="#ccc" text-anchor="middle">Aquí podrías insertar tu showreel</text>
+  <text x="400" y="400" font-family="Arial, sans-serif" font-size="18" fill="#ccc" text-anchor="middle">o video demo de animación</text>
+  <path d="M350,450 L450,450 L400,500 Z" fill="#4deeea"/>
+  <animateTransform 
+    attributeName="transform" 
+    attributeType="XML" 
+    type="rotate" 
+    from="0 400 350" 
+    to="360 400 350" 
+    dur="30s" 
+    repeatCount="indefinite"/>
+</svg>
