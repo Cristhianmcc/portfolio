@@ -75,6 +75,36 @@
     opacity: 1;
 }
 
+/* Efecto 3D para imágenes de proyectos */
+.project-image {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1) rotateY(5deg);
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Añadir sombra dinámica al pasar el cursor */
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0);
+    border-radius: var(--border-radius);
+    transition: box-shadow 0.6s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.project-card:hover::after {
+    box-shadow: 0 20px 40px rgba(112, 71, 235, 0.3);
+}
+
 /* Animación de pulso */
 @keyframes pulse {
     0% { transform: scale(1); }
@@ -258,4 +288,64 @@
     -webkit-text-fill-color: transparent;
     color: transparent;
     animation: textGradient 5s linear infinite;
+}
+
+/* Animación para enlace de YouTube */
+.project-video-link {
+    position: relative;
+    overflow: hidden;
+    transform-origin: left center;
+}
+
+.project-video-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-video-link:hover::after {
+    width: 100%;
+}
+
+.project-video-link i {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.project-video-link:hover i {
+    transform: scale(1.2) rotate(5deg);
+    color: #FF0000;
+    animation: pulseYoutube 1.5s infinite;
+}
+
+@keyframes pulseYoutube {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Efecto de entrada para los enlaces de YouTube */
+.project-video-link {
+    opacity: 0;
+    animation: fadeInUp 0.5s forwards;
+    animation-delay: 0.3s;
+}
+
+/* Animaciones para el demo reel con video */
+.demo-reel-container {
+    animation: float 6s ease-in-out infinite;
+    transform-origin: center center;
+}
+
+.demo-reel-frame {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.demo-reel-container:hover .demo-reel-frame {
+    transform: scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }

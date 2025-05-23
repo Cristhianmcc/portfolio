@@ -375,6 +375,46 @@ img {
     100% { transform: translateY(0px); }
 }
 
+/* Nuevos estilos para el Demo Reel con video */
+.demo-reel-container {
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.demo-reel-frame {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--primary-color);
+    aspect-ratio: 16/9;
+}
+
+.demo-reel-frame iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.demo-reel-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    pointer-events: none;
+    box-shadow: 0 0 20px 5px var(--primary-color);
+    opacity: 0.5;
+    animation: glow-pulse 3s infinite alternate;
+}
+
+@keyframes glow-pulse {
+    0% { opacity: 0.3; box-shadow: 0 0 15px 2px var(--primary-color); }
+    100% { opacity: 0.6; box-shadow: 0 0 25px 8px var(--primary-color); }
+}
+
 .scroll-down {
     position: absolute;
     bottom: 30px;
@@ -581,6 +621,28 @@ img {
     color: var(--gray-color);
     margin: 0;
     font-size: var(--text-sm);
+    margin-bottom: 10px;
+}
+
+.project-video-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-color);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    transition: var(--transition-fast);
+    margin-top: 10px;
+}
+
+.project-video-link i {
+    font-size: 1.1rem;
+    color: #FF0000; /* Color rojo de YouTube */
+}
+
+.project-video-link:hover {
+    color: var(--secondary-color);
+    transform: translateX(5px);
 }
 
 /* Project Modal */

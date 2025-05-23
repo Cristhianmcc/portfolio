@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModal = modal.querySelector('.close-modal');
     const skillBars = document.querySelectorAll('.skill-bar');
     const sections = document.querySelectorAll('.section');
+    const youtubeLinks = document.querySelectorAll('.project-video-link');
+    
+    // Inicializar efectos para enlaces de YouTube
+    initYoutubeLinks();
     
     // Ocultar pantalla de carga una vez que todo esté cargado
     window.addEventListener('load', () => {
@@ -341,35 +345,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function initializeActiveLinkOnScroll() {
-        // Obtener todas las secciones y sus posiciones
         const sections = document.querySelectorAll('section[id]');
         
-        // Función simple para actualizar el enlace activo
         const updateActiveLink = () => {
             const scrollPos = window.scrollY + 100;
             
-            // Verificar cada sección
             sections.forEach(section => {
-                const sectionId = section.getAttribute('id');
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                const correspondingLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
                 
                 if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                    // Quitar active de todos los enlaces
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    
-                    // Añadir active solo al enlace correspondiente
-                    const correspondingLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-                    if (correspondingLink) {
-                        correspondingLink.classList.add('active');
-                    }
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    correspondingLink && correspondingLink.classList.add('active');
                 }
             });
         };
         
-        // Actualizar en scroll con debounce simple
+        // Debounced scroll event
         let isScrolling;
         window.addEventListener('scroll', () => {
             clearTimeout(isScrolling);
@@ -378,8 +372,37 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 50);
         });
         
-        // Activar inicialmente después de cargar
-        setTimeout(updateActiveLink, 100);
+        // Initial update
+        updateActiveLink();
+    }
+    
+    function initYoutubeLinks() {
+        youtubeLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Prevenir comportamiento por defecto
+                e.preventDefault();
+                
+                // Guardar la URL del enlace
+                const href = link.getAttribute('href');
+                const youtubeIcon = link.querySelector('i');
+                
+                // Animar el icono de YouTube antes de abrir el enlace
+                youtubeIcon.style.transform = 'scale(1.5) rotate(360deg)';
+                youtubeIcon.style.color = '#FF0000';
+                youtubeIcon.style.transition = 'transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), color 0.3s ease';
+                
+                // Después de la animación, abrir el enlace en una nueva pestaña
+                setTimeout(() => {
+                    window.open(href, '_blank');
+                    
+                    // Restaurar el icono después de un tiempo
+                    setTimeout(() => {
+                        youtubeIcon.style.transform = '';
+                        youtubeIcon.style.transition = '';
+                    }, 300);
+                }, 600);
+            });
+        });
     }
     
     // Inicializar efectos de parallax
